@@ -1,0 +1,17 @@
+<!doctype html>
+{% extends "partials/conteneur.html" %}
+
+{% block body %} 
+<div class="container">
+    <h2>Information sur {{manuscrit}}</h2>
+    {%if info %}
+    <ul>
+        {%for i in info %}
+        <li>{{i}}</li>
+        {%endfor%}
+    </ul>
+    {%else%}
+    <p>Il n y'a pas d'information sur ce manuscrit</p>
+    {%endif%}
+</div>
+{% endblock %}

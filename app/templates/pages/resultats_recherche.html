@@ -1,0 +1,39 @@
+<!doctype html>
+{% extends "partials/conteneur.html" %}
+
+{% block body %} 
+<div class="container"> 
+ 
+    {%if donnees%}
+        <table class="table">
+         <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">nom</th>
+                    <th scope="col">id</th>
+                    <th scope="col">Date minimal</th>
+                    <th scope="col">Date maximal</th>
+                    <th scope="col">Lieu de Conservation</th>
+                    <th scope="col">Titre</th>
+                    <th scope="col">Photo</th>
+                </tr>
+            </thead>
+            <tbody>
+                {%for diagram in donnees%}
+                <tr>
+                   <th scope="row">{{loop.index}}</th>
+                   <td>{{diagram.img_name}}</td>
+                   <td>{{diagram.id}}</td>
+                   <td>{{diagram.date_min}}</td>
+                   <td>{{diagram.date_max}}</td>
+                   <td>{{diagram.Cons_place}}</td>
+                   <td>{{diagram.Manuscript_name}}</td>
+                   <td><img src="{{url_for('static', filename='img/Flores_images/'+diagram.img_name)}}" alt="Diagramme"></td>
+                 </tr>
+                {%endfor%}
+            </tbody>  
+        </table>       
+    {%else%}
+        <p>Pas de donnees</p>
+    {%endif%}
+{% endblock %}

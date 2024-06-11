@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Flores|{{sous_titre}}</title>
+    {% include "partials/css.html" %}
+    {% block css %}{%endblock%}
+</head>
+<body>
+    {%include "partials/sidebar.html"%}
+    <h1>Flores {{sous_titre}} </h1>
+    <nav class="navbar navbar-expand-lg  fixed-top navbar-light">
+        <div align="right">{% include "partials/formulaires/recherche_rapide.html" %}</div>
+    </nav>
+    {%block body%}{%endblock%}      
+</body>

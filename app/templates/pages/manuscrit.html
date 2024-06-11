@@ -1,0 +1,40 @@
+<!doctype html>
+{% extends "partials/conteneur.html" %}
+
+{% block body %} 
+<div class="container">    
+    {%if donnees%}
+        <table class="table">
+         <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">id</th>
+                    <th scope="col">Date minimal</th>
+                    <th scope="col">Date maximal</th>
+                    <th scope="col">Lieu de Conservation</th>
+                    <th scope="col">Titre</th>
+                </tr>
+            </thead>
+            <tbody>
+                {%for manuscrit in donnees%}
+                <tr>
+                    <th scope="row">{{loop.index}}</th>
+                    <td><a href="{{url_for('pays_specifique', nom=manuscrit.id)}}">{{manuscrit.id}}</a></td>
+                    <td>{{manuscrit.date_min}}</td>
+                    <td>{{manuscrit.date_max}}</td>
+                    <td>{{manuscrit.loc}}</td>
+                    <td>{{manuscrit.titre}}</td>
+                </tr>
+                {%endfor%}
+              </tbody>
+        </table>
+    {%else%}
+        <p>Pas de donnees</p>
+    {%endif%}
+</div>
+{% endblock %}
+
+
+
+
+    
