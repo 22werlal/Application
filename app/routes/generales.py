@@ -1,17 +1,50 @@
 from ..app import app, db
-from flask import render_template,request
+from flask import render_template,request,jsonify, make_response, send_from_directory
 from sqlalchemy import text,or_
 from ..models.diagramme import diagram
 from ..config import Config
+import json
 
 @app.route("/")
 @app.route("/home")
 def accueil():
     return render_template("pages/acceuil.html",sous_titre="!")
 
-#@app.route("/home/<string:id>")
-#def home(id:str):
-#    return "Flores almagesti " +id 
+@app.route("/visualisation")
+def visualisation():
+    donnees = []
+    for diag in diagram.query.all():
+        donnees.append({
+        "img_name":diag.img_name,
+        "id":diag.id,
+        "date_min":diag.date_min,
+        "date_max":diag.date_max,
+        "Cons_place":diag.Cons_place,
+        "Manuscript_name": diag.Manuscript_name
+        })
+    return render_template("pages/visualisation.html", sous_titre="visualisation")
+
+@app.route('/api/convert', methods=['GET'])
+def get_events():
+    events = diagram.query.all()
+    events_list = [event.to_dict() for event in events]
+    return jsonify(events_list)
+
+
+@app.route('/export_events', methods=['GET'])
+def export_events():
+    events = diagram.query.all()
+    events_list = [event.to_dict() for event in events]
+
+    # Écrire les données dans un fichier JSON
+    with open('db.json', 'w') as json_file:
+        json.dump(events_list, json_file, indent=4)
+
+    return make_response(jsonify({'message': 'Data successfully exported to da.json'}), 200)
+
+@app.route('/data')
+def get_data():
+    return send_from_directory('data', 'da.json')
 
 @app.route("/manuscrit")
 def manuscrit():
