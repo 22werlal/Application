@@ -17,13 +17,19 @@
       <option value="witness_2">Witness</option>
       <option value="date_2">Date</option>
       <option value="place_2">Place</option>
-    </select>
+    </select>  
+    <input type="range" min="1401" max="1550" value="1401" class="slider" id="myRange">
     <div id="content">
         <svg height="800px" width="1600px">
           <g class="map"></g>
         </svg>
     </div>
-    <script src="{{url_for('static', filename='js/Graph.js')}}"></script>
+
+    <script src="{{url_for('static', filename='js/Graph.js')}}" type="module"></script>
+    <script src="{{url_for('static', filename='js/place.js')}}" type="module"></script>
+    <script src="{{url_for('static', filename='js/witness.js')}}" type="module"></script>
+
+    
 </body>
 {% endblock %}
 

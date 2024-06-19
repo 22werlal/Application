@@ -105,3 +105,6 @@ svg {
   display: block;
   margin: auto;
 }
+.slider{
+  display: inline-block
+}
