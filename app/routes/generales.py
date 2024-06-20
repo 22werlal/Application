@@ -4,6 +4,51 @@ from sqlalchemy import text,or_
 from ..models.diagramme import diagram
 from ..config import Config
 import json
+liste_manuscrit= [{
+        "id":"wit225",
+        "date_min":"1401",
+        "date_max":"1500",
+        "loc":"Biblioteka Jagiellonska, Cracovie",
+        "titre": "Flores Almagesti"
+
+    },{
+        "id":"wit226",
+        "date_min":"1474",
+        "date_max":"1474",
+        "loc":"Biblioteka Jagiellonska, Cracovie",
+        "titre": "Flores Almagesti"
+    },{
+        "id":"wit227",
+        "date_min":"1401",
+        "date_max":"1500",
+        "loc":"BnF, Paris",
+        "titre": "Flores Almagesti"
+    },{
+        "id":"wit228",
+        "date_min":"1401",
+        "date_max":"1550",
+        "loc":"Biblioteca Apostolica Vaticana, Vatican City",
+        "titre": "Flores Almagesti"
+    }
+    ,{
+        "id":"wit229",
+        "date_min":"1470",
+        "date_max":"1471",
+        "loc":"Biblioteca Apostolica Vaticana, Vatican City",
+        "titre": "Flores Almagesti"
+    },{
+        "id":"wit240",
+        "date_min":"1450",
+        "date_max":"1500",
+        "loc":"Biblioteca Universitaria, Bologna",
+        "titre": "Flores Almagesti"
+    },{
+        "id":"wit241",
+        "date_min":"1450",
+        "date_max":"1500",
+        "loc":"Biblioteca Comunale Augusta, Perugia",
+        "titre": "Flores Almagesti"
+    }]
 
 @app.route("/")
 @app.route("/home")
@@ -22,7 +67,7 @@ def visualisation():
         "Cons_place":diag.Cons_place,
         "Manuscript_name": diag.Manuscript_name
         })
-    return render_template("pages/visualisation.html", sous_titre="visualisation")
+    return render_template("pages/visualisation.html",donnees=liste_manuscrit, sous_titre="visualisation")
 
 @app.route('/api/convert', methods=['GET'])
 def get_events():
@@ -48,52 +93,7 @@ def get_data():
 
 @app.route("/manuscrit")
 def manuscrit():
-    donnees = [{
-        "id":"Wit225",
-        "date_min":"1401",
-        "date_max":"1500",
-        "loc":"Biblioteka Jagiellonska, Cracovie",
-        "titre": "Flores Almagesti"
-
-    },{
-        "id":"Wit226",
-        "date_min":"1474",
-        "date_max":"1474",
-        "loc":"Biblioteka Jagiellonska, Cracovie",
-        "titre": "Flores Almagesti"
-    },{
-        "id":"Wit227",
-        "date_min":"1401",
-        "date_max":"1500",
-        "loc":"BnF, Paris",
-        "titre": "Flores Almagesti"
-    },{
-        "id":"Wit228",
-        "date_min":"1401",
-        "date_max":"1550",
-        "loc":"Biblioteca Apostolica Vaticana, Vatican City",
-        "titre": "Flores Almagesti"
-    }
-    ,{
-        "id":"Wit229",
-        "date_min":"1470",
-        "date_max":"1471",
-        "loc":"Biblioteca Apostolica Vaticana, Vatican City",
-        "titre": "Flores Almagesti"
-    },{
-        "id":"Wit240",
-        "date_min":"1450",
-        "date_max":"1500",
-        "loc":"Biblioteca Universitaria, Bologna",
-        "titre": "Flores Almagesti"
-    },{
-        "id":"Wit241",
-        "date_min":"1450",
-        "date_max":"1500",
-        "loc":"Biblioteca Comunale Augusta, Perugia",
-        "titre": "Flores Almagesti"
-    }]
-    return render_template("pages/manuscrit.html", donnees=donnees,sous_titre="Manuscrit")
+    return render_template("pages/manuscrit.html", donnees=liste_manuscrit,sous_titre="Manuscrit")
 
 @app.route("/manuscrit/<string:nom>")
 def pays_specifique(nom):

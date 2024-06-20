@@ -12,8 +12,5 @@ export function graph_witness(imageUrl) {
      .attr('height', 200)
      .attr("href", d => imageUrl + d.img_name)
      .attr('x', (d, i) => i * 220)
-     .style('opacity',1)
-     .on("mouseover", mouseover)
-     .on("mousemove", mousemove)
-     .on("mouseleave", mouseleave);
+     .style('opacity',1);
   }
