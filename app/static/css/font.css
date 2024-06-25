@@ -105,3 +105,100 @@ svg {
   display: block;
   margin: auto;
 }
+.timeline {
+            font-family: 'Arial', sans-serif;
+            margin: 40px;
+        }
+.axis path,
+.axis line {
+            fill: none;
+            shape-rendering: crispEdges;
+        }
+.axis text {
+            font-size: 14px;
+        }
+.event {
+            fill: steelblue;
+            stroke: steelblue;
+            stroke-width: 1.5px;
+        }
+.tooltip {
+            position: absolute;
+            text-align: center;
+            width: auto;
+            height: auto;
+            padding: 5px;
+            font: 12px sans-serif;
+            background: lightsteelblue;
+            border: 0px;
+            border-radius: 8px;
+            pointer-events: none;
+        }
+ #tooltip {
+            position: absolute;
+            opacity: 0;
+            background: #f9f9f9;
+            border: 1px solid #ede8f5;
+            padding: 5px;
+            pointer-events: none;
+        }
+.handle {
+            fill: #3d52a0;
+            stroke: #000;
+            stroke-width: 1.25px ;
+            cursor: pointer;
+        }
+.track {
+            stroke: #000;
+            stroke-width: 6px;
+            stroke-linecap: round;
+        }
+.track-inset {
+            stroke: #ede8f5;
+            stroke-width: 4px;
+            stroke-linecap: round;
+        }
+.track-overlay {
+    pointer-events: stroke;
+    stroke-width: 50px;
+    stroke: transparent;
+    cursor: crosshair;
+}
+.event-bar {
+    position: relative;
+}
+
+.event-bar::before,
+.event-bar::after {
+    content: '';
+    position: absolute;
+    width: 4px; /* Adjust the width as needed */
+    height: 4px; /* Adjust the height as needed */
+    background-color: #3d52a0; /* Same color as the bar */
+    border-radius: 50%; /* Makes it a circle, use 0 for a square (i.e., small trait) */
+}
+
+.event-bar::before {
+    left: 0; /* Position at the start of the bar */
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.event-bar::after {
+    right: 0; /* Position at the end of the bar */
+    top: 50%;
+    transform: translateY(-50%);
+}
+.image.clicked {
+            transform: scale(1.2);
+            transition: transform 0.3s;
+        }
+.info-box {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #adbbda;
+            border: 1px solid #3d52a0;
+            padding: 10px;
+            display: none;
+        }
