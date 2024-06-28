@@ -1,9 +1,14 @@
 import {load_map} from '/static/js/load_map.js';
-import { toggleFriseOpacity } from '/static/js/frise_slider.js';
+
 export function graph_place(randomObservations) {
-    toggleFriseOpacity(false);
     d3.select('#content g.map')
         .selectAll('path, line, rect, text,circle, image, #slider')
+        .style('opacity', 0);
+    d3.select('#frise')
+        .selectAll('*')
+        .style('opacity', 0);
+    d3.select('#slider')
+        .selectAll('*')
         .style('opacity', 0);
 
   load_map();

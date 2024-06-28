@@ -26,7 +26,7 @@ th {
   width: 220px;
   text-decoration: none;
   position: fixed;
-  z-index: 1;
+  z-index: 10;
   top: 0;
   left: 0;
   background-color: #001f3f;
@@ -202,3 +202,19 @@ svg {
             padding: 10px;
             display: none;
         }
+
+#image-svg {
+    position: absolute;
+    top: 190px; /* Ajustez la position verticale selon vos besoins */
+    left: 200px; /* Ajustez la position horizontale selon vos besoins */
+    z-index: 1; /* Assurez-vous que le z-index est inférieur à celui de votre barre de menu */
+    opacity: 1;
+}
+
+#cerclem-content {
+    position: absolute;
+    margin-right: 2px; /* Ajustez la marge gauche selon vos besoins */
+    margin-top: 50px;
+    transform: translate(-50%, -50%); /* Ajuster pour centrer */
+    z-index: 10; /* Ajuster le z-index si nécessaire */
+}

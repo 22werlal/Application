@@ -1,7 +1,15 @@
 export function graph_witness(randomObservations, imageUrl) {
     d3.select('#content g.map')
-        .selectAll('path, line, rect, text, #slider')
+        .selectAll('path, line, rect, text, #slider, #frise')
         .style('opacity', 0);
+    d3.select('#image-svg').remove()
+    d3.select('#frise')
+        .selectAll('*')
+        .style('opacity', 0);
+    d3.select('#slider')
+        .selectAll('*')
+        .style('opacity', 0);
+
 
     d3.selectAll("svg")
      .selectAll("image")

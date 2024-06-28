@@ -1,5 +1,4 @@
 import { graph_date } from '/static/js/date.js';
-import { random_images } from '/static/js/cerclem.js';
 import {graph_place} from '/static/js/place.js';
 import {graph_witness} from '/static/js/witness.js';
 import {graph_place_date} from '/static/js/place_date.js';
@@ -178,25 +177,15 @@ function visualisation() {
       const selectedValue1 = select1.value;
       const selectedValue2 = select2.value;
 
-      if (selectedValue1 === "start_1" && selectedValue2 === "start_2") {
-        slider.style.display = 'none';
-        hidecheckbox(checkboxIds);
-        random_images(randomObservations);
-      } else if ((selectedValue1 === "place_1" && selectedValue2 === "place_2") |
-                 (selectedValue1 === "start_1" && selectedValue2 === "place_2") |
-                 (selectedValue1 === "place_1" && selectedValue2 === "start_2")) {
+      if ((selectedValue1 === "place_1" && selectedValue2 === "place_2")) {
         hidecheckbox(checkboxIds);
         graph_place(randomObservations);
         toggleFriseOpacity(false);
-      } else if ((selectedValue1 === "date_1" && selectedValue2 === "date_2") |
-                 (selectedValue1 === "start_1" && selectedValue2 === "date_2") |
-                 (selectedValue1 === "date_1" && selectedValue2 === "start_2")) {
+      } else if ((selectedValue1 === "date_1" && selectedValue2 === "date_2")) {
         graph_date(randomObservations);
         slider.style.display = 'none';
         toggleFriseOpacity(true);
-      } else if ((selectedValue1 === "witness_1" && selectedValue2 === "witness_2") |
-                 (selectedValue1 === "start_1" && selectedValue2 === "witness_2") |
-                 (selectedValue1 === "witness_1" && selectedValue2 === "start_2")) {
+      } else if ((selectedValue1 === "witness_1" && selectedValue2 === "witness_2")) {
         slider.style.display = 'none';
         hidecheckbox(checkboxIds);
         graph_witness(randomObservations, 'static/img/Flores_images/');
@@ -238,4 +227,3 @@ if (document.readyState === "loading") {
   // `DOMContentLoaded` has already fired
   visualisation();
 }
-

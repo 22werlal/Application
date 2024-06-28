@@ -8,7 +8,7 @@ export function load_frise(randomObservations) {
         initializeFrise(randomObservations);
         friseInitialized = true;
     } else {
-        updateFrise(randomObservations);
+        initializeFrise(randomObservations);
     }
 
     toggleFriseOpacity(friseVisible);
@@ -26,7 +26,7 @@ function initializeFrise(randomObservations) {
      const height =  800 - margin.top - margin.bottom;
 
      const svg = d3.select("#content")
-        .append("svg")
+        .selectAll("svg")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
         .append("g")
@@ -226,17 +226,5 @@ function initializeFrise(randomObservations) {
 
         update(xSlider.domain()[0]);
     }
-}
 
-function updateFrise(randomObservations) {
-    // Logique de mise à jour de la frise selon les nouvelles données
-    // Par exemple, mise à jour des positions des éléments existants
-    // et ajustement des échelles si nécessaire
-    // ...
-}
-
-function initializeSlider(svg, width, height) {
-    // Logique d'initialisation du slider
-    // Cette fonction doit être capable de créer et configurer le slider dans svg
-    // ...
 }

@@ -152,4 +152,8 @@ def recherche_rapide(page=1):
             donnees=resultats,
             requete=chaine)
 
+@app.route('/cercle-diag')
+def cercle_diag():
+    return render_template('pages/cercle_diag.html')
+
 

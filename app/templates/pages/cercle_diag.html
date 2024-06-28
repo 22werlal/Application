@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="en">
+<head>
+</head>
+{% extends "partials/conteneur.html" %}
+{% block body %}
+<body>
+    <div id="content">
+    </div>
+    <script src="{{url_for('static', filename='js/cerclem.js')}}" type="module"></script>
+     <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="script.js"></script>
+</body>
+{% endblock %}

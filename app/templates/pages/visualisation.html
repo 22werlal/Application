@@ -4,32 +4,28 @@
 </head>
 {% extends "partials/conteneur.html" %}
 {% block body %}
-
 <body>
-    <p class="visubar"> Sort by </p>
+    <p class="visubar">Sort by</p>
     <select id="select_1">
-      <option value="start_1">Property 1</option>
       <option value="witness_1">Witness</option>
       <option value="date_1">Date</option>
       <option value="place_1">Place</option>
     </select>
     <select id="select_2">
-      <option value="start_2">Property 2</option>
       <option value="witness_2">Witness</option>
       <option value="date_2">Date</option>
       <option value="place_2">Place</option>
     </select>
-    <div id="tooltip" class="tooltip" style="opacity: 0;"></div>
     <input type="range" min="1401" max="1550" value="1401" class="slider" id="myRange">
-    {%for i in donnees %}
-      <input type="checkbox" id="{{i.id}}" class="update_checkbox">
-      <label for="{{i.id}}">{{i.id}}</label>
-    {%endfor%}
+    {% for i in donnees %}
+      <input type="checkbox" id="{{ i.id }}" class="update_checkbox">
+      <label for="{{ i.id }}">{{ i.id }}</label>
+    {% endfor %}
     <div id="content">
         <svg height="800px" width="1600px">
             <g class="map"></g>
-             <g id="frise"></g>
-             <div id="slider"></div>
+            <g id="frise"></g>
+            <div id="slider"></div>
         </svg>
     </div>
 
@@ -41,7 +37,7 @@
     <script src="{{url_for('static', filename='js/load_map.js')}}" type="module"></script>
     <script src="{{url_for('static', filename='js/frise_slider.js')}}" type="module"></script>
     <script src="{{url_for('static', filename='js/date.js')}}" type="module"></script>
-    <script src="{{url_for('static', filename='js/cerclem.js')}}" type="module"></script>
 
 </body>
 {% endblock %}
+</html>
