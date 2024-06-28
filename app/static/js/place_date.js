@@ -33,11 +33,14 @@ export function graph_place_date(randomObservations) {
       .style('opacity', d => timePeriode(d,selectedValue))
     
       }
-  
+    
+    var output = document.getElementById("demo");
+    output.innerHTML = 1472;
     document.getElementById('myRange').addEventListener('input', function(event) {
       let value = event.target.value;
       updateImages(value);
       console.log('sliderValue');
+      output.innerHTML = value;
     });
     updateImages(1472)
   

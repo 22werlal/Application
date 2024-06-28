@@ -1,7 +1,8 @@
 from ..app import app, db
+from random import choice
 
 class diagram(db.Model):
-    __tablename__="convert"
+    __tablename__="db"
     img_name= db.Column(db.Text, primary_key=True)
     id = db.Column(db.String(6))
     City = db.Column(db.String(20))
@@ -11,6 +12,7 @@ class diagram(db.Model):
     date_max = db.Column(db.Integer)
     date_min = db.Column(db.Integer)
     Manuscript_name = db.Column(db.String(20))
+    Type=db.Column(db.String(20))
     def __repr__(self):
         return '<diagram %r>' % (self.name)
     def to_dict(self):
@@ -24,5 +26,6 @@ class diagram(db.Model):
         'manuscript_name': self.Manuscript_name,
         'place': self.Cons_place,
         'wit': self.id,
+        'type':self.Type
         }
 

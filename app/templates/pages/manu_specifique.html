@@ -6,12 +6,13 @@
     <h2>Information sur {{manuscrit}}</h2>
     {%if info %}
     <ul>
-        {%for i in info %}
-        <li>{{i}}</li>
-        {%endfor%}
+        <li>Work: {{info["titre"]}}</li>
+        <li>ID: {{info["id"]}}</li>
+        <li> Chronological information: {{info["date_min"]}}-{{info["date_max"]}}</li>
+        <li>Conservation Place: {{info["loc"]}}</li>
     </ul>
     {%else%}
-    <p>Il n y'a pas d'information sur ce manuscrit</p>
+    <p>Their are no information on this manuscrit</p>
     {%endif%}
 </div>
 {% endblock %}

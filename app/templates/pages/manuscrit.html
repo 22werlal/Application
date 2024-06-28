@@ -7,19 +7,19 @@
         <table class="table">
          <thead>
                 <tr>
-                    <th scope="col">#</th>
+                    <th scope="col"></th>
                     <th scope="col">id</th>
-                    <th scope="col">Date minimal</th>
-                    <th scope="col">Date maximal</th>
-                    <th scope="col">Lieu de Conservation</th>
-                    <th scope="col">Titre</th>
+                    <th scope="col">minimal date</th>
+                    <th scope="col">maximal date</th>
+                    <th scope="col">Conservation Place</th>
+                    <th scope="col">Title</th>
                 </tr>
             </thead>
             <tbody>
                 {%for manuscrit in donnees%}
                 <tr>
                     <th scope="row">{{loop.index}}</th>
-                    <td><a href="{{url_for('pays_specifique', nom=manuscrit.id)}}">{{manuscrit.id}}</a></td>
+                    <td><a href="{{url_for('pays_specifique', nom=manuscrit.id)}}" class="yellow">{{manuscrit.id}}</a></td>
                     <td>{{manuscrit.date_min}}</td>
                     <td>{{manuscrit.date_max}}</td>
                     <td>{{manuscrit.loc}}</td>

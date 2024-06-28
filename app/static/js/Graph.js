@@ -2,7 +2,7 @@ import {graph_place} from '/static/js/place.js';
 import {graph_witness} from '/static/js/witness.js';
 import {graph_place_date} from '/static/js/place_date.js';
 import {graph_place_witness} from '/static/js/place_witness.js';
-import {load_map} from '/static/js/load_map.js';
+
 
 
 
@@ -139,7 +139,15 @@ d3.json("static/js/db.json").then(jsonData => {
   .on("mouseleave", mouseleave); 
 
   let slider=document.getElementById('myRange')
-  slider.style.display = 'none';
+  let slider_value=document.getElementById('slider_value')
+  function showslider(){
+    slider.style.display = 'inline-block';
+    slider_value.style.display = 'inline-block';
+  }
+  function hideslider(){
+    slider.style.display = 'none';
+    slider_value.style.display = 'none';
+  }
   const checkboxIds = ['wit225', 'wit226', 'wit227','wit228','wit229','wit240','wit241'];
   function hidecheckbox(checkboxIds) {
     console.log('Je suis cachee!');
@@ -155,7 +163,7 @@ d3.json("static/js/db.json").then(jsonData => {
         }
     })};
     function showcheckbox(checkboxIds) {
-      console.log('Je suis cachee!');
+      console.log('Me voila');
       // Hide all checkboxes
       checkboxIds.forEach(function(id) {
           const checkbox = document.getElementById(id);
@@ -169,6 +177,7 @@ d3.json("static/js/db.json").then(jsonData => {
       
     })};
     hidecheckbox(checkboxIds);
+    hideslider();
 
 
 
@@ -179,30 +188,30 @@ d3.json("static/js/db.json").then(jsonData => {
     const selectedValue2 = select2.value;
   
     if (selectedValue1 === "start_1" && selectedValue2 === "start_2") {
-      slider.style.display = 'none';
+      hideslider();
       hidecheckbox(checkboxIds);
       graph_start();
     } else if ((selectedValue1 === "place_1" && selectedValue2 === "place_2" )| (selectedValue1 === "start_1" && selectedValue2 === "place_2" )|(selectedValue1 === "place_1" && selectedValue2 === "start_2")) {
-      slider.style.display = 'none';
+      hideslider();
       hidecheckbox(checkboxIds);
       graph_place(randomObservations);
     } else if ((selectedValue1 === "date_1" && selectedValue2 === "date_2")|(selectedValue1 === "start_1" && selectedValue2 === "date_2")|(selectedValue1 === "date_1" && selectedValue2 === "start_2")) {
       graph_date();
-      slider.style.display = 'none';
+      hideslider();
     } else if ((selectedValue1 === "witness_1" && selectedValue2 === "witness_2")|(selectedValue1 === "start_1" && selectedValue2 === "witness_2")|(selectedValue1 === "witness_1" && selectedValue2 === "start_2")) {
-      slider.style.display = 'none';
+      hideslider();
       hidecheckbox(checkboxIds);
       graph_witness(randomObservations);
     } else if ((selectedValue1 === "place_1" && selectedValue2 === "date_2")|(selectedValue1 === "date_1" && selectedValue2 === "place_2")) {
-      slider.style.display = 'inline-block';
+      showslider();
       hidecheckbox(checkboxIds);
       graph_place_date(randomObservations);
     } else if ((selectedValue1 === "witness_1" && selectedValue2 === "place_2")|(selectedValue1 === "place_1" && selectedValue2 === "witness_2")) {
-      slider.style.display = 'none';
+      hideslider();
       showcheckbox(checkboxIds);
       graph_place_witness(randomObservations);
     } else if ((selectedValue1 === "witness_1" && selectedValue2 === "date_2")|(selectedValue1 === "date_1" && selectedValue2 === "witness_2")) {
-     slider.style.display = 'none';
+      hideslider();
      hidecheckbox(checkboxIds);
      graph_witness_date();
     } 

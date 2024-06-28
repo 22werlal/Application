@@ -10,7 +10,6 @@ liste_manuscrit= [{
         "date_max":"1500",
         "loc":"Biblioteka Jagiellonska, Cracovie",
         "titre": "Flores Almagesti"
-
     },{
         "id":"wit226",
         "date_min":"1474",
@@ -89,17 +88,19 @@ def export_events():
 
 @app.route('/data')
 def get_data():
-    return send_from_directory('data', 'da.json')
+    return send_from_directory('data', 'db.json')
 
 @app.route("/manuscrit")
 def manuscrit():
-    return render_template("pages/manuscrit.html", donnees=liste_manuscrit,sous_titre="Manuscrit")
+    return render_template("pages/manuscrit.html", donnees=liste_manuscrit,sous_titre="Manuscript")
 
 @app.route("/manuscrit/<string:nom>")
 def pays_specifique(nom):
     info = []
     if nom in {"wit225","wit226","wit227","wit228","wit229","wit240","wit241"}:
-        info = []
+        for d in liste_manuscrit :
+            if d.get("id") == nom:
+                info=d
     return render_template("pages/manu_specifique.html", manuscrit=nom, info=info, sous_titre=nom)
 
 @app.route("/diagramme")
@@ -112,7 +113,8 @@ def diag():
         "date_min":diag.date_min,
         "date_max":diag.date_max,
         "loc":diag.Cons_place,
-        "titre": "Flores Almagesti"
+        "titre": "Flores Almagesti",
+        "type":diag.Type
         })
     return render_template("pages/diagram.html", donnees=donnees, sous_titre="liste des diagrammes")
 
@@ -122,7 +124,7 @@ def diagramm(page):
    query =  diagram.query
    table=query.paginate(page=page, per_page=app.config["MANU_PER_PAGE"])
 
-   return render_template("pages/diagram_spe.html", pagination=table, sous_titre="liste des diagrammes")
+   return render_template("pages/diagram_spe.html", pagination=table, sous_titre="list of diagrams")
 from flask import render_template,request
 
 @app.route("/recherche_rapide")
@@ -152,4 +154,8 @@ def recherche_rapide(page=1):
             donnees=resultats,
             requete=chaine)
 
-
+@app.route("/sandbox")
+def sandbox():
+    return render_template("pages/sandbox.html", 
+            sous_titre="Sandbox", 
+            donnees=liste_manuscrit)

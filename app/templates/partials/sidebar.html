@@ -3,11 +3,12 @@
         <img src="{{url_for('static', filename='img/logo/file-DmhjTCkFpbgBN09Hr98s6OHc')}}" alt="Diagramme">
         <ul>
             <div class="link">
-                <li><a href="{{url_for('accueil')}}">Acceuil</a></li>
-                <li><a href="{{url_for('manuscrit')}}">Manuscrit</a></li>
-                <li><a href="{{url_for('diagramm',page=1)}}">Diagramme</a></li>
-                <li><a href="{{url_for('visualisation')}}">Visualisation</a></li>
-                <li><a href="{{url_for('recherche_rapide')}}">Recherche</a></li>
+                <li><a href="{{url_for('accueil')}}" class="navlink">Homepage</a></li>
+                <li><a href="{{url_for('manuscrit')}}" class="navlink">Manuscripts</a></li>
+                <li><a href="{{url_for('diagramm',page=1)}}" class="navlink">Diagrams</a></li>
+                <li><a href="{{url_for('visualisation')}}" class="navlink">Visualisation</a></li>
+                <li><a href="{{url_for('sandbox')}}" class="navlink" >Sandbox</a></li>
+                <li><a href="{{url_for('recherche_rapide')}}" class="navlink">Search</a></li>
             </div>
         </ul>
       </div>

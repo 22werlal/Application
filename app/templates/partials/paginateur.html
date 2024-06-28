@@ -5,17 +5,17 @@
                 {% if page %}
         
                 {% if page != pagination.page %}
-                    <li class="page-item">
+                    <li class="page">
                         <a class="page-link" href="{{url_for("diagramm",page=page)}}">{{page}}</a>
                     </li>
                 {% else %}
-                    <li class="page-item active disabled">
-                    <a class="page-link">{{page}} <span class="sr-only">(actuelle)</span></a>
+                    <li class="page">
+                    <a class="page-link">{{page}} <span class="sr-only">(current)</span></a>
                     </li>
                 {% endif %}
         
                 {% else %}
-                    <li class="page-item disabled">
+                    <li class="page">
                     <a class="page-link">...</a>
                     </li>
                 {% endif %}
